@@ -17,9 +17,6 @@ public class TicketConfiguracion : IEntityTypeConfiguration<Ticket>
         b.Property(t => t.Titulo).IsRequired().HasMaxLength(120);
         b.Property(t => t.Descripcion).IsRequired().HasMaxLength(2000);
 
-        // ****PROFESOR: **** Los enums se guardan como TEXTO ("Critica") y no como número (3).
-        // Ventaja: la tabla se lee sola y reordenar el enum no corrompe datos.
-        // Costo: ordenar por la columna da orden alfabético, no de gravedad (ver TicketConsultas.Ordenar).
         b.Property(t => t.Prioridad).HasConversion<string>().HasMaxLength(20).IsRequired();
         b.Property(t => t.Estado).HasConversion<string>().HasMaxLength(20).IsRequired();
 
@@ -29,9 +26,16 @@ public class TicketConfiguracion : IEntityTypeConfiguration<Ticket>
             .HasForeignKey(t => t.ClienteId)
             .OnDelete(DeleteBehavior.Restrict);
 
+        
+        b.HasOne(t => t.Agente)
+            .WithMany(a => a.Tickets)
+            .HasForeignKey(t => t.AgenteId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         // Índices pensados para los filtros que realmente usa la pantalla.
         b.HasIndex(t => new { t.Estado, t.Prioridad });
         b.HasIndex(t => t.FechaCreacion);
         b.HasIndex(t => t.ClienteId);
+        b.HasIndex(t => t.AgenteId);       
     }
 }

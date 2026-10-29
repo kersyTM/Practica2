@@ -1,6 +1,6 @@
 ﻿using Abstracciones.Comunes;
 
-namespace Abstracciones.Agente
+namespace Abstracciones.Agentes
 {
     public interface IAgenteDA
     {

@@ -1,3 +1,4 @@
+using Abstracciones.Agentes;
 using Abstracciones.Clientes;
 using Abstracciones.Comentarios;
 using Abstracciones.Etiquetas;
@@ -26,4 +27,5 @@ public class Ticket
     public Cliente? Cliente { get; set; }                                   // N-1
     public List<Comentario> Comentarios { get; set; } = new();              // 1-N
     public List<TicketEtiqueta> TicketEtiquetas { get; set; } = new();      // N-M con entidad intermedia
+    public Agente? Agente { get; set; }
 }

@@ -1,7 +1,9 @@
+using Abstracciones.Agentes;
 using Abstracciones.Clientes;
 using Abstracciones.Comentarios;
 using Abstracciones.Etiquetas;
 using Abstracciones.Tickets;
+using DA.Agentes;
 using DA.Clientes;
 using DA.Comentarios;
 using DA.Contexto;
@@ -24,6 +26,9 @@ public static class RegistroDA
     public static IServiceCollection AddDatos(this IServiceCollection servicios, string cadenaConexion, bool ticketsEnMemoria)
     {
         servicios.AddDbContext<SistemaSoporteContexto>(o => o.UseSqlServer(cadenaConexion));
+
+        // Módulo Agentes
+        servicios.AddScoped<IAgenteDA, AgenteDA>();
 
         // Módulo Clientes
         servicios.AddScoped<IClienteDA, ClienteDA>();

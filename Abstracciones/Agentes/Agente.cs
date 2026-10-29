@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Abstracciones.Agente
+namespace Abstracciones.Agentes
 {
     public class Agente
     {
@@ -11,7 +11,7 @@ namespace Abstracciones.Agente
         public string Nombre { get; set; } = string.Empty;
         public string Correo { get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;
-        public string? capMaximaTicket { get; set; }
+        public string? CapMaximaTicket { get; set; }
         public DateTime FechaRegistro { get; set; }
 
         public bool Activo { get; set; } = true;    

@@ -1,3 +1,4 @@
+using Abstracciones.Agentes;
 using Abstracciones.Clientes;
 using Abstracciones.Comentarios;
 using Abstracciones.Etiquetas;
@@ -15,7 +16,7 @@ public class SistemaSoporteContexto : DbContext
     public DbSet<Comentario> Comentarios => Set<Comentario>();
     public DbSet<Etiqueta> Etiquetas => Set<Etiqueta>();
     public DbSet<TicketEtiqueta> TicketEtiquetas => Set<TicketEtiqueta>();
-
+    public DbSet<Agente> Agentes => Set<Agente>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // ****PROFESOR: **** Una clase de configuración por entidad, junto a su módulo (carpeta).
